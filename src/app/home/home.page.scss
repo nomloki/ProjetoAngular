@@ -1,27 +1,37 @@
-#container {
-  text-align: center;
+$primary-color: red;
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+.toolbar{
+  --background: rgb(146,179,255);
+  --background: linear-gradient(90deg, rgba(146,179,255,1) 0%, rgba(137,183,193,1) 48%, rgba(195,225,232,1) 97%);
+  --color: #FFFFFF;
 }
+.calendario{
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+  &__foto{
+    border-radius: 20px;
+  }
+  &__mes{
+    font-size: 1.6rem;
+    color: #71039d;
+  }
+  &__ano{
+    font-size: 1.2em;
+  }
+  &__dia-semana{
+    font-weight: bold;
+  }
+  &__dia-bg{
+    border-radius: 20px;
+    transition: ease all .7s
+  }
+  &__dia-bg:hover{
+    transition: ease all .7s;
+    background: #a4b3d6;
+    color: #fff;
+  }
+  &__bg{
+    border-radius: 20px;
+    background: rgb(146,179,255);
+    background: linear-gradient(90deg, rgba(146,179,255,1) 0%, rgba(137,183,193,1) 48%, rgba(195,225,232,1) 97%);
+  }
 }
