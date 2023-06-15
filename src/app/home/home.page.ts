@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
@@ -7,7 +8,7 @@ import { IonicModule } from '@ionic/angular';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule],
+  imports: [IonicModule, CommonModule, RouterLink],
 })
 export class HomePage {
   perfil = {
@@ -25,7 +26,7 @@ export class HomePage {
   metricas_sociais = {
     curtidas: '41.8K',
     seguidores: '853',
-    amigos: '250'
+    amigos: 250
   }
 
   postagens = [
@@ -228,4 +229,10 @@ export class HomePage {
         }
       }    
   ]
+
+  seguir_status: string = 'Seguir';
+
+  setSeguir(){
+    this.seguir_status = this.seguir_status == 'Seguir' ? ('Seguindo') : ('Seguir');
+  }
 }
