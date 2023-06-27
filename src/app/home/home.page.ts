@@ -11,25 +11,32 @@ import { IonicModule } from '@ionic/angular';
 
 export class HomePage {
   resultado: any = 0;
-  operacao: any = 0;
-  adicionar(num:string) {
-    (this.operacao == 0)?(
-        this.operacao = '',
-        this.operacao += num
-        ):(this.operacao += num);
-        }
+  operacao: any = ''
+  operadores: string[] = ['-', '+', '*', '/', '.'];
+  adicionar(num: string) {
+      this.operacao += num;
+    if (this.operacao == '*' || this.operacao == '/' || this.operacao == '%') {
+      this.backspace();
+      if (this.operacao == '+' || this.operacao == '-') {
+        this.backspace();        
+      }
+    }
+  }
   limparTela() {
     this.resultado = 0;
-    this.operacao = 0;
+    this.operacao = '';
   }
   resultadoOperacao() {
-      this.resultado = (eval(this.operacao.toString()));
-      this.operacao = this.resultado;
+    this.resultado = (eval(this.operacao.toString()));
+    this.operacao = this.resultado;
+    this.resultado == 'Infinity' ? (this.resultado = 'Syntax Error', this.operacao = 0) : null;
   }
-  inverterValor(){
+  inverterValor() {
+    this.operacao = this.operacao * (-1);
     this.resultado = this.resultado * (-1);
+    isNaN(this.operacao) ? (this.resultado = "Syntax Error", this.operacao = 0) : null;
   }
-  backspace(){
+  backspace() {
     this.operacao = this.operacao.slice(0, -1);
   }
 }
