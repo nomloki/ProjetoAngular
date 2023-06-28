@@ -12,11 +12,13 @@ import { IonicModule } from '@ionic/angular';
 export class HomePage {
   resultado: any = 0;
   operacao: any = '';
+  operadores: any[] = ['+', '/', '*', '%'];
   adicionar(num: string) {
-      this.operacao += num;
-    if (this.operacao == '*' || this.operacao == '/' || this.operacao == '%' || this.operacao == '+') {
-      this.backspace();
-    }
+    this.operacao += num;
+    this.resultadoOperacao();
+    // // TODO: validação->{
+    //     verificar se começa com um operador lógico |SE SIM =>  não deixa ser colocado | SE NAO => se for o ' - ' não deixar que seja colocado novamente
+    // }
   }
   limparTela() {
     this.resultado = 0;
@@ -24,13 +26,15 @@ export class HomePage {
   }
   resultadoOperacao() {
     this.resultado = (eval(this.operacao.toString()));
+    !isFinite(this.resultado) ? (this.resultado = 'Syntax Error', this.operacao = '') : null;
+  }
+  resultadoCalc() {
     this.operacao = this.resultado;
-    !isFinite(this.resultado) ? (this.resultado = 'Syntax Error', this.operacao = ''):null;
   }
   inverterValor() {
     this.operacao = this.operacao * (-1);
     this.resultado = this.resultado * (-1);
-    isNaN(this.operacao) ? (this.resultado = "Syntax Error", this.operacao = ''):null;
+    isNaN(this.operacao) ? (this.resultado = "Syntax Error", this.operacao = '') : null;
     this.resultadoOperacao();
   }
   backspace() {
