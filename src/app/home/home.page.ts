@@ -11,22 +11,28 @@ import { IonicModule } from '@ionic/angular';
 
 export class HomePage {
   // declarando da variável 'resultado' que pode ser qualquer valor e recebe 0
-  resultado: any = 0;
+  resultado:any = 0;
   // declaração da variável 'operação' que pode ser qualquer valor e recebe ''
-  operacao: any = '';
+  operacao:any = '';
   // declaração de uma lista que contém +, /, * e %
-  operadores: any[] = ['+', '/', '*', '%'];
+  operadores:string[] = ['+', '/', '*', '%'];
 
   // função para adicionar valores, tendo como parametro o 'num' que é uma string
-  adicionar(num: string) {
-    // a variável operação vai receber ela mesma mais o valor do 'num'
-    this.operacao += num;
-    // e vai chamar a função 'resultadoOperação()'
-    this.resultadoOperacao();
-
+  adicionar(num:string) {
     // // TODO: validação->{
-    //     verificar se começa com um operador lógico |SE SIM =>  não deixa ser colocado | SE NAO => se for o ' - ' não deixar que seja colocado novamente
+    //     verificar se começa com um operador lógico |SE SIM =>  não deixa ser colocado | SE NAO => se for o ( - ) não deixar que seja colocado novamente
     // }
+    this.operacao.toString().includes(this.operadores) ? (
+      this.operacao == '-' ? (
+        this.operacao += num,
+        this.backspace()
+      ) : (null)
+    ) : (
+      // a variável operação vai receber ela mesma mais o valor do 'num'
+      this.operacao += num,
+      // e vai chamar a função 'resultadoOperação()'
+      this.resultadoOperacao()
+    );
   }
 
   // função para limpar a tela
