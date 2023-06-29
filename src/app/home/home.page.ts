@@ -43,6 +43,14 @@ export class HomePage {
     this.operacao = '';
   }
 
+  porcentagem(){
+    // para a função de porcentagem temos que pensar da seguinte forma:
+    // primeiro temos que criar um array com 'operacao', do qual separa cada indice por (+, -, * e /).
+    // quando o botão é clicado, nossa variavel de 'porcentagem' vai retroceder 1 indice deste array, pegar o valor desse indice e dividir por 100.
+    // a seguir, outra variavel vai percorrer o array e pegar o valor do qual foi aplicado a % e multiplicá-lo pelo valor da variável porcentagem.
+    // ex:  ResPorcentagem = (valorInteiro/100) + valorPorcentagem;
+  }
+
   // função para calcular a operação
   resultadoOperacao() {
 
